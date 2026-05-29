@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Puerto Rico Shape Map</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIINfQXZmA3ru2fzpYlBVPqnykiHvZBckCw="
+      crossorigin=""
+    >
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    >
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <aside class="panel" aria-label="Shape tools">
+        <div class="brand-block">
+          <p class="eyebrow">Puerto Rico Size Comparison</p>
+          <h1>Shape Scale Map</h1>
+        </div>
+
+        <section class="tool-section">
+          <h2>View</h2>
+          <div class="button-row">
+            <button id="fit-pr" type="button">Puerto Rico</button>
+            <button id="clear-active" type="button">Clear all</button>
+          </div>
+        </section>
+
+        <section class="tool-section">
+          <div class="section-heading">
+            <h2>Presets</h2>
+            <button id="clear-presets" class="text-button" type="button">Clear</button>
+          </div>
+          <div id="preset-shapes" class="saved-list" aria-live="polite"></div>
+        </section>
+
+        <section class="tool-section">
+          <div class="section-heading">
+            <h2>Custom Shapes</h2>
+            <button id="clear-saved" class="text-button" type="button">Clear</button>
+          </div>
+          <div id="custom-draw-idle" class="custom-draw-controls">
+            <button id="draw-custom" class="full-button" type="button">New custom shape</button>
+          </div>
+          <div id="custom-draw-active" class="custom-draw-controls draw-controls is-hidden">
+            <button id="finish-custom" type="button">Finish</button>
+            <button id="undo-custom" type="button">Delete last</button>
+            <button id="cancel-custom" type="button">Cancel</button>
+          </div>
+          <div id="saved-shapes" class="saved-list custom-shapes-list" aria-live="polite"></div>
+        </section>
+
+        <section class="tool-section stats-section">
+          <h2>Active Shape</h2>
+          <dl class="stats-grid">
+            <div>
+              <dt>Area</dt>
+              <dd id="shape-area">None</dd>
+            </div>
+            <div>
+              <dt>Perimeter</dt>
+              <dd id="shape-perimeter">None</dd>
+            </div>
+          </dl>
+        </section>
+
+        <section class="tool-section municipality-section">
+          <div class="section-heading">
+            <h2>Municipality Shapes</h2>
+            <button id="clear-municipalities" class="text-button" type="button">Clear</button>
+          </div>
+          <div id="municipality-shapes" class="saved-list municipality-list" aria-live="polite"></div>
+        </section>
+      </aside>
+
+      <section class="map-wrap" aria-label="Interactive map">
+        <div id="map"></div>
+        <div class="map-status" id="map-status">Draw a polygon to begin.</div>
+      </section>
+    </main>
+
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/@turf/turf@7/turf.min.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
